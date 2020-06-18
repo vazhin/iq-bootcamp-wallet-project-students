@@ -17,7 +17,7 @@
     Please enter a message in the textarea.
   </div> -->
 
-  <div class="no-wallet-page vh-100 vw-100">
+  <div class="no-wallet-page vh-100 vw-100 hidden">
     <nav class="navbar navbar-light bg-dark">
       <a class="wallet-app-logo navbar-brand ml-3 display-4" href="#"><i class="fas fa-wallet"></i>&nbsp;&nbsp;Wallet
         App</a>
@@ -42,26 +42,27 @@
   </div>
 
 
-  <div class="wallet-page hidden">
+  <div class="wallet-page">
 
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createWalletModal">Create
       Wallet</button>
 
-    <div class="modal fade" id="createWalletModal" tabindex="-1" role="dialog" aria-labelledby="Create new wallet"
+    <div class="modal fade" id="createWalletModal" tabindex="-1" role="dialog" aria-labelledby="createWalletModal"
       aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Create new wallet</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form>
+          <form>
+            <div class="modal-header">
+              <h5 class="modal-title">Create new wallet</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+
               <div class="form-group">
                 <label for="name-input" class="col-form-label">Name:</label>
-                <input type="text" class="form-control" id="name-input">
+                <input type="text" class="form-control" id="name-input" autocomplete="off" required>
               </div>
 
               <div class="form-group">
@@ -84,19 +85,19 @@
 
               <div class="form-group">
                 <label for="balance-input" class="col-form-label">Balance:</label>
-                <input type="text" class="form-control" id="balance-input" placeholder="0">
+                <input type="text" class="form-control" id="balance-input" placeholder="0" autocomplete="off" required>
               </div>
 
               <div class="form-group">
                 <label for="description-input" class="col-form-label">Description:</label>
-                <input type="text" class="form-control" id="description-input">
+                <input type="text" class="form-control" id="description-input" autocomplete="off" required>
               </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Create Wallet</button>
-          </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Create Wallet</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -106,14 +107,14 @@
 
   <script src="https://kit.fontawesome.com/7793973956.js" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-    crossorigin="anonymous"></script>
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
   <script src="./app/app.js"></script>
 </body>
 
