@@ -1,11 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <title>Document</title>
 </head>
+
 <body>
-  
+
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createWalletModal">Create Wallet</button>
+
+  <div class="modal fade" id="createWalletModal" tabindex="-1" role="dialog" aria-labelledby="Create new wallet"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Create new wallet</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="name-input" class="col-form-label">Name:</label>
+              <input type="text" class="form-control" id="name-input">
+            </div>
+
+            <div class="form-group">
+              <label class="col-form-label">Currency:</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="currencyOptions" id="currency-option1" value="usDollars" checked>
+                <label class="form-check-label" for="currency-option1">
+                  US Dollars ($)
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="currencyOptions" id="currency-option2" value="iraqiDinars">
+                <label class="form-check-label" for="currency-option2">
+                  Iraqi Dinars (IQD)
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="balance-input" class="col-form-label">Balance:</label>
+              <input type="text" class="form-control" id="balance-input" placeholder="0">
+            </div>
+
+            <div class="form-group">
+              <label for="description-input" class="col-form-label">Description:</label>
+              <input type="text" class="form-control" id="description-input">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Create Wallet</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+  <script src="./app/app.js"></script>
 </body>
+
 </html>
