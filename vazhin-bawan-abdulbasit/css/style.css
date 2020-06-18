@@ -24,3 +24,11 @@
   color: black;
 }
 
+.select-wallet {
+  border: none !important;
+}
+
+.select-wallet:focus {
+  outline: none !important;
+}
+

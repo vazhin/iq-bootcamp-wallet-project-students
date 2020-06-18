@@ -6,15 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/style.css">
   <title>Document</title>
 </head>
 
 <body>
 
+  <!-- NOTE: is-invalid class to form control and required
+  <div class="invalid-feedback">
+    Please enter a message in the textarea.
+  </div> -->
+
   <div class="no-wallet-page vh-100 vw-100">
     <nav class="navbar navbar-light bg-dark">
-      <a class="wallet-app-logo navbar-brand ml-3 display-4" href="#"><i class="fas fa-wallet"></i>&nbsp;&nbsp;Wallet App</a>
+      <a class="wallet-app-logo navbar-brand ml-3 display-4" href="#"><i class="fas fa-wallet"></i>&nbsp;&nbsp;Wallet
+        App</a>
+
+      <form class="form-inline mr-3 hidden">
+        <select class="custom-select custom-select-sm select-wallet">
+          <option selected>Person1 Wallet</option>
+          <option value="1">Person2 Wallet</option>
+          <option value="2">Person3 Wallet</option>
+          <option value="3">Person4 Wallet</option>
+        </select>
+      </form>
     </nav>
     <div class="no-wallet-content w-100 d-flex flex-column justify-content-center align-items-center">
       <i class="fas fa-ghost mb-4"></i>
@@ -22,7 +37,7 @@
       <p class="mb-4">You have no wallets. Start by creating one</p>
 
       <button type="button" class="btn btn-primary">Create Wallet</button>
-      
+
     </div>
   </div>
 
