@@ -1,0 +1,26 @@
+.hidden {
+  display: none !important;
+}
+
+.navbar {
+  height: 7%;
+}
+
+.no-wallet-content {
+  height: 93%;
+}
+
+.no-wallet-content p {
+  font-size: 1.1rem;
+}
+
+.wallet-app-logo {
+  font-weight: 400;
+  color: white !important; 
+}
+
+.fa-ghost {
+  font-size: 300px;
+  color: black;
+}
+
