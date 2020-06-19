@@ -15,6 +15,22 @@ createNewWalletBtnTransactionPage.addEventListener('click', () => {
   goToPage(transactionPage, newWalletPage)
 })
 
+closeModalBtn.addEventListener('click', () => {
+  console.log(checkIfTheresAnyWallets())
+  if(checkIfTheresAnyWallets()){
+    goToPage(newWalletPage, transactionPage)
+  } else {
+    goToPage(newWalletPage, noWalletPage)
+  }
+})
+
+function checkIfTheresAnyWallets(){
+  if (arrOfWallets.length === 0 && getFromLocalStorage() === null){
+    return false
+  } else {
+    return true
+  } 
+}
 
 function checkLocalStorage(){
   if(getFromLocalStorage() === null){
