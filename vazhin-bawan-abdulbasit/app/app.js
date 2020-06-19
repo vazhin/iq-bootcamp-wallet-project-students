@@ -5,7 +5,16 @@ let newWalletForm = document.querySelector('#new-wallet-form')
 let walletNameInput = document.querySelector('#name-input')
 let walletBalanceInput = document.querySelector('#balance-input')
 let walletDescriptionInput = document.querySelector('#description-input')
-let arrOfWallets = []
+let arrOfWallets;
+checkLocalStorage()
+
+function checkLocalStorage(){
+  if(getFromLocalStorage() === null){
+    arrOfWallets = []
+  } else {
+    arrOfWallets = getFromLocalStorage();
+  }
+}
 
 createNewWalletBtn.addEventListener('click', () => {
   goToNewWalletPage()
