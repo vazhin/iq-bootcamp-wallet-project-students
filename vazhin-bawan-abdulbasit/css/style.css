@@ -16,7 +16,7 @@
 
 .wallet-app-logo {
   font-weight: 400;
-  color: white !important; 
+  color: white !important;
 }
 
 .fa-ghost {
@@ -37,3 +37,64 @@
   font-size: 0.95rem;
 }
 
+@media only screen and (max-width: 700px) {
+
+  .select-wallet,
+  .navbar form button {
+    font-size: 0.85rem;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .wallet-app-logo {
+    font-size: 1rem;
+  }
+
+  .navbar form div,
+  .navbar form,
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navbar form {
+    margin: 0 !important;
+    width: 185px;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .navbar form div {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 3.5%;
+  }
+
+  .select-wallet,
+  .navbar form button {
+    margin: 0 !important;
+    padding: 4.5px;
+  }
+
+  .select-wallet,
+  .navbar form button {
+    font-size: 0.75rem;
+  }
+}
+
+@media only screen and (max-width: 440px) {
+  .fa-ghost {
+    font-size: 190px;
+  }
+
+  .no-wallet-content h2 {
+    font-size: 3rem;
+  }
+
+  .no-wallet-content p {
+    font-size: 0.95rem;
+  }
+}
