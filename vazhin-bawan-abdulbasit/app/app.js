@@ -1,4 +1,5 @@
 let createNewWalletBtn = document.querySelector('#create-new-wallet-btn')
+let createNewWalletBtnTransactionPage = document.querySelector('#create-new-wallet-btn-transaction-page')
 let closeModalBtn = document.querySelector('#close-modal-btn')
 let noWalletPage = document.querySelector('#no-wallet-page')
 let newWalletPage = document.querySelector('#new-wallet-page')
@@ -9,6 +10,10 @@ let walletBalanceInput = document.querySelector('#balance-input')
 let walletDescriptionInput = document.querySelector('#description-input')
 let arrOfWallets;
 checkLocalStorage()
+
+createNewWalletBtnTransactionPage.addEventListener('click', () => {
+  goToPage(transactionPage, newWalletPage)
+})
 
 
 function checkLocalStorage(){
