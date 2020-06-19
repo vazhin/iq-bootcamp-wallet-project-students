@@ -9,6 +9,7 @@ let walletNameInput = document.querySelector('#name-input')
 let walletBalanceInput = document.querySelector('#balance-input')
 let walletDescriptionInput = document.querySelector('#description-input')
 let walletSelector = document.querySelector('#wallet-selector')
+let deleteWalletBtn = document.querySelector('#delete-wallet-btn')
 let arrOfWallets;
 
 class Wallet {
@@ -26,6 +27,7 @@ class Wallet {
 }
 
 navigateToAnAppropriatePage()
+renderWalletsIntoSelecor()
 
 createNewWalletBtnTransactionPage.addEventListener('click', () => {
   goToPage(transactionPage, newWalletPage)
@@ -54,8 +56,6 @@ function checkLocalStorage() {
     return false
   } else {
     arrOfWallets = getFromLocalStorage();
-    console.log(arrOfWallets)
-    renderWalletsIntoSelecor()
     return true
   }
 }
@@ -84,7 +84,6 @@ function createANewWallet() {
     closeModalBtn.click()
     goToPage(newWalletPage, transactionPage)
   })
-  newWalletForm.reset()
 }
 
 function storeInLocalStorage(array) {
@@ -96,7 +95,37 @@ function getFromLocalStorage() {
 }
 
 function renderWalletsIntoSelecor() {
-  for(walet of arrOfWallets){
-    Wallet.render(walet)
+  if (checkLocalStorage()) {
+    for (let wallet of arrOfWallets) {
+      Wallet.render(wallet)
+    }
   }
+}
+
+deleteWalletBtn.addEventListener('click', () => {
+  deleteWallet()
+  walletSelector.innerHTML = ''
+  if (arrOfWallets.length !== 0) {
+    UpdateLocalStorage().forEach(wallet => {
+      Wallet.render(wallet)
+    })
+  } else {
+    localStorage.clear()
+    goToPage(transactionPage, noWalletPage)
+  }
+})
+
+function deleteWallet(){
+  let newArr = [...arrOfWallets]
+  for (let i = 0; i < newArr.length; i++) {
+    if (newArr[i].name === walletSelector.value) {
+      arrOfWallets.splice(i, 1)
+    }
+  }
+}
+
+function UpdateLocalStorage(){
+  localStorage.clear()
+  storeInLocalStorage(arrOfWallets)
+  return getFromLocalStorage()
 }
