@@ -26,9 +26,14 @@
 
 .select-wallet {
   border: none !important;
+  font-size: 0.95rem;
 }
 
 .select-wallet:focus {
   outline: none !important;
+}
+
+.navbar form button {
+  font-size: 0.95rem;
 }
 
