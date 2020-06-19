@@ -17,7 +17,7 @@
     Please enter a message in the textarea.
   </div> -->
 
-  <div class="no-wallet-page vh-100 vw-100 hidden">
+  <div class="no-wallet-page vh-100 vw-100" id="no-wallet-page">
     <nav class="navbar navbar-light bg-dark">
       <a class="wallet-app-logo navbar-brand ml-3 display-4" href="#"><i class="fas fa-wallet"></i>&nbsp;&nbsp;Wallet
         App</a>
@@ -36,22 +36,18 @@
       <h2 class="display-4 mb-4">Ooops!</h2>
       <p class="mb-4">You have no wallets. Start by creating one</p>
 
-      <button type="button" class="btn btn-primary">Create Wallet</button>
+      <button type="button" class="btn btn-primary" id="create-new-wallet-btn" data-toggle="modal" data-target="#createWalletModal">Create Wallet</button>
 
     </div>
   </div>
 
 
-  <div class="wallet-page">
-
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createWalletModal">Create
-      Wallet</button>
-
+  <div class="wallet-page hidden" id="new-wallet-page">
     <div class="modal fade" id="createWalletModal" tabindex="-1" role="dialog" aria-labelledby="createWalletModal"
       aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-          <form>
+          <form id="new-wallet-form">
             <div class="modal-header">
               <h5 class="modal-title">Create new wallet</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
