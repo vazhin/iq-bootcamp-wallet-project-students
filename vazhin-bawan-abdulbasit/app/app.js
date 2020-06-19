@@ -10,33 +10,36 @@ let walletBalanceInput = document.querySelector('#balance-input')
 let walletDescriptionInput = document.querySelector('#description-input')
 let arrOfWallets;
 checkLocalStorage()
+navigateToAnAppropriatePage()
 
 createNewWalletBtnTransactionPage.addEventListener('click', () => {
   goToPage(transactionPage, newWalletPage)
 })
 
 closeModalBtn.addEventListener('click', () => {
-  console.log(checkIfTheresAnyWallets())
-  if(checkIfTheresAnyWallets()){
+  console.log(checkLocalStorage())
+  if(checkLocalStorage()){
     goToPage(newWalletPage, transactionPage)
   } else {
     goToPage(newWalletPage, noWalletPage)
   }
 })
 
-function checkIfTheresAnyWallets(){
-  if (arrOfWallets.length === 0 && getFromLocalStorage() === null){
-    return false
+function navigateToAnAppropriatePage(){
+  if(checkLocalStorage()){
+    transactionPage.classList.remove('hidden')
   } else {
-    return true
-  } 
+    noWalletPage.classList.remove('hidden')
+  }
 }
 
 function checkLocalStorage(){
   if(getFromLocalStorage() === null){
     arrOfWallets = []
+    return false
   } else {
     arrOfWallets = getFromLocalStorage();
+    return true
   }
 }
 
@@ -63,6 +66,7 @@ function createANewWallet(){
     newWalletForm.reset()
     closeModalBtn.click()
     goToPage(newWalletPage, transactionPage)
+    newWallet.render()
   })
 }
 
@@ -81,5 +85,10 @@ class Wallet {
     this.startingBalance = startingBalance;
     this.transactions = transactions;
     this.description = description;
+  }
+
+  render(){
+    let newWalletOption = document.createElement('option')
+   // newWalletOption
   }
 }

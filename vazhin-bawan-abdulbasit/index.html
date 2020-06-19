@@ -12,11 +12,6 @@
 
 <body>
 
-  <!-- NOTE: is-invalid class to form control and required
-  <div class="invalid-feedback">
-    Please enter a message in the textarea.
-  </div> -->
-
   <div class="no-wallet-page vh-100 vw-100 hidden" id="no-wallet-page">
     <nav class="navbar navbar-light bg-dark">
       <a class="wallet-app-logo navbar-brand ml-3 display-4" href="#"><i class="fas fa-wallet"></i>&nbsp;&nbsp;Wallet
@@ -26,12 +21,11 @@
       <i class="fas fa-ghost mb-4"></i>
       <h2 class="display-4 mb-4">Ooops!</h2>
       <p class="mb-4">You have no wallets. Start by creating one</p>
-
       <button type="button" class="btn btn-primary" id="create-new-wallet-btn" data-toggle="modal"
         data-target="#createWalletModal">Create Wallet</button>
-
     </div>
   </div>
+
 
 
   <div class="wallet-page hidden" id="new-wallet-page">
@@ -44,12 +38,10 @@
               <h5 class="modal-title">Create new wallet</h5>
             </div>
             <div class="modal-body">
-
               <div class="form-group">
                 <label for="name-input" class="col-form-label">Name:</label>
                 <input type="text" class="form-control" id="name-input" autocomplete="off" required>
               </div>
-
               <div class="form-group">
                 <label class="col-form-label">Currency:</label>
                 <div class="form-check">
@@ -67,12 +59,10 @@
                   </label>
                 </div>
               </div>
-
               <div class="form-group">
                 <label for="balance-input" class="col-form-label">Balance:</label>
                 <input type="text" class="form-control" id="balance-input" placeholder="0" autocomplete="off" required>
               </div>
-
               <div class="form-group">
                 <label for="description-input" class="col-form-label">Description:</label>
                 <input type="text" class="form-control" id="description-input" autocomplete="off" required>
@@ -86,14 +76,14 @@
         </div>
       </div>
     </div>
-
   </div>
 
-  <div class="transaction-page" id="transaction-page">
+
+
+  <div class="transaction-page hidden" id="transaction-page">
     <nav class="navbar navbar-light bg-dark">
       <a class="wallet-app-logo navbar-brand ml-3 display-4" href="#"><i class="fas fa-wallet"></i>&nbsp;&nbsp;Wallet
         App</a>
-
       <form class="form-inline mr-3">
         <select class="custom-select select-wallet mr-3">
           <option selected>Person1 Wallet</option>
