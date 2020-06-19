@@ -21,22 +21,14 @@
     <nav class="navbar navbar-light bg-dark">
       <a class="wallet-app-logo navbar-brand ml-3 display-4" href="#"><i class="fas fa-wallet"></i>&nbsp;&nbsp;Wallet
         App</a>
-
-      <form class="form-inline mr-3 hidden">
-        <select class="custom-select custom-select-sm select-wallet">
-          <option selected>Person1 Wallet</option>
-          <option value="1">Person2 Wallet</option>
-          <option value="2">Person3 Wallet</option>
-          <option value="3">Person4 Wallet</option>
-        </select>
-      </form>
     </nav>
     <div class="no-wallet-content w-100 d-flex flex-column justify-content-center align-items-center">
       <i class="fas fa-ghost mb-4"></i>
       <h2 class="display-4 mb-4">Ooops!</h2>
       <p class="mb-4">You have no wallets. Start by creating one</p>
 
-      <button type="button" class="btn btn-primary" id="create-new-wallet-btn" data-toggle="modal" data-target="#createWalletModal">Create Wallet</button>
+      <button type="button" class="btn btn-primary" id="create-new-wallet-btn" data-toggle="modal"
+        data-target="#createWalletModal">Create Wallet</button>
 
     </div>
   </div>
@@ -98,6 +90,22 @@
       </div>
     </div>
 
+  </div>
+
+  <div class="transaction-page hidden" id="transaction-page">
+    <nav class="navbar navbar-light bg-dark">
+      <a class="wallet-app-logo navbar-brand ml-3 display-4" href="#"><i class="fas fa-wallet"></i>&nbsp;&nbsp;Wallet
+        App</a>
+
+      <form class="form-inline mr-3">
+        <select class="custom-select custom-select-sm select-wallet">
+          <option selected>Person1 Wallet</option>
+          <option value="1">Person2 Wallet</option>
+          <option value="2">Person3 Wallet</option>
+          <option value="3">Person4 Wallet</option>
+        </select>
+      </form>
+    </nav>
   </div>
 
 

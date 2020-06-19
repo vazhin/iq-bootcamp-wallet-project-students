@@ -1,6 +1,7 @@
 let createNewWalletBtn = document.querySelector('#create-new-wallet-btn')
 let noWalletPage = document.querySelector('#no-wallet-page')
 let newWalletPage = document.querySelector('#new-wallet-page')
+let transactionPage = document.querySelector('#transaction-page')
 let newWalletForm = document.querySelector('#new-wallet-form')
 let walletNameInput = document.querySelector('#name-input')
 let walletBalanceInput = document.querySelector('#balance-input')
@@ -17,13 +18,13 @@ function checkLocalStorage(){
 }
 
 createNewWalletBtn.addEventListener('click', () => {
-  goToNewWalletPage()
+  goToPage(noWalletPage, newWalletPage)
   createANewWallet()
 })
 
-function goToNewWalletPage(){
-  noWalletPage.classList.add('hidden')
-  newWalletPage.classList.remove('hidden')
+function goToPage(pageToHide, pageToShow){
+  pageToHide.classList.add('hidden')
+  pageToShow.classList.remove('hidden')
 }
 
 function createANewWallet(){
@@ -37,7 +38,7 @@ function createANewWallet(){
     arrOfWallets.push(newWallet)
     storeInLocalStorage(arrOfWallets)
     newWalletForm.reset()
-    newWalletPage.classList.add('hidden')
+    goToPage(newWalletPage, transactionPage)
   })
 }
 
