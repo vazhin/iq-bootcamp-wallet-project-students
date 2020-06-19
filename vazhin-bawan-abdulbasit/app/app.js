@@ -1,4 +1,5 @@
 let createNewWalletBtn = document.querySelector('#create-new-wallet-btn')
+let closeModalBtn = document.querySelector('#close-modal-btn')
 let noWalletPage = document.querySelector('#no-wallet-page')
 let newWalletPage = document.querySelector('#new-wallet-page')
 let transactionPage = document.querySelector('#transaction-page')
@@ -8,6 +9,7 @@ let walletBalanceInput = document.querySelector('#balance-input')
 let walletDescriptionInput = document.querySelector('#description-input')
 let arrOfWallets;
 checkLocalStorage()
+
 
 function checkLocalStorage(){
   if(getFromLocalStorage() === null){
@@ -38,6 +40,7 @@ function createANewWallet(){
     arrOfWallets.push(newWallet)
     storeInLocalStorage(arrOfWallets)
     newWalletForm.reset()
+    closeModalBtn.click()
     goToPage(newWalletPage, transactionPage)
   })
 }
