@@ -77,6 +77,9 @@ function createANewWallet() {
     let currency = document.querySelector('input[name="currencyOptions"]:checked').value;
     let balance = walletBalanceInput.value
     let description = walletDescriptionInput.value
+    if (name === '' || balance === '' || description === ''){ // solves a bug
+      return
+    }
     let newWallet = new Wallet(name, currency, balance, [], description)
     Wallet.render(newWallet)
     arrOfWallets.push(newWallet)
