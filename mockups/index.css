@@ -1,0 +1,21 @@
+#amount{margin-top: 10%;
+    padding-top: 10%;
+    font-size: 2em;
+    font-weight: 500;
+    display: inline-block;
+}
+#date{
+    display: inline-block;
+    margin-left: 30%;
+    font-size: 1em;
+    font-weight: 500;
+}
+#transaction-list{
+    list-style: none;
+    width: 90%;
+}
+#note{
+    font-size: 2em;
+    color: rgb(52, 52, 175);
+    font-weight: 500;
+}
