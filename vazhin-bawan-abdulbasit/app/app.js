@@ -31,7 +31,7 @@ class Wallet {
   }
 
   static render(wallet) {
-    walletSelector.insertAdjacentHTML('beforeend', `<option value="${wallet.name}">${wallet.name}'s wallet</option>`)
+    walletSelector.insertAdjacentHTML('afterbegin', `<option value="${wallet.name}">${wallet.name}'s wallet</option>`)
   }
   static renderContentsOfWallet(wallet) {
     currentMoneySpan.innerText = wallet.startingBalance
@@ -43,7 +43,6 @@ class Wallet {
       WalletBalanceHeading.innerHTML = `Wallet Balance: <span
         id="current-money">${wallet.startingBalance}</span><span
         id="current-symbol">${' IQD'}</span>`
-      // currentSymbolSpan.innerText = 'IQD'
     }
   }
 }
@@ -132,7 +131,6 @@ function goToPage(pageToHide, pageToShow) {
   pageToShow.classList.remove('hidden')
 }
 
-
 newWalletForm.addEventListener('submit', (e) => {
   e.preventDefault();
   e.stopImmediatePropagation();
@@ -155,7 +153,10 @@ newWalletForm.addEventListener('submit', (e) => {
   arrOfWallets.forEach(wallet => {
     Wallet.render(wallet)
   })
+  walletSelector.value = newWallet.name
   storeInLocalStorage(arrOfWallets)
+  list.innerHTML = ''
+  Wallet.renderContentsOfWallet(newWallet)
   closeModalBtn.click()
   goToPage(newWalletPage, transactionPage)
 })
@@ -183,6 +184,12 @@ deleteWalletBtn.addEventListener('click', () => {
     UpdateLocalStorage().forEach(wallet => {
       Wallet.render(wallet)
     })
+    let currentWallet = arrOfWallets.find(wallet => wallet.name === walletSelector.value)
+    list.innerHTML = ''
+    for (let transaction of currentWallet.transactions) {
+      Transaction.renderTransaction(transaction)
+    }
+    Wallet.renderContentsOfWallet(currentWallet)
   } else {
     localStorage.clear()
     goToPage(transactionPage, noWalletPage)
@@ -196,12 +203,6 @@ function deleteWallet() {
       arrOfWallets.splice(i, 1)
     }
   }
-}
-
-function UpdateLocalStorage() {
-  localStorage.clear()
-  storeInLocalStorage(arrOfWallets)
-  return getFromLocalStorage()
 }
 
 function seperateTags(tagsString) {
@@ -260,14 +261,11 @@ addTransactionForm.addEventListener('submit', (e) => {
       }
     }
   }
-  walletSelector.innerHTML = ''
-  UpdateLocalStorage().forEach(wallet => {
-    Wallet.render(wallet)
-  })
+  UpdateLocalStorage()
   Transaction.renderAllTransactions()
-
   let currentWallet = arrOfWallets.find(wallet => wallet.name === walletSelector.value)
   Wallet.renderContentsOfWallet(currentWallet)
+  addTransactionForm.reset()
 })
 
 walletSelector.addEventListener('change', (e) => {
@@ -277,7 +275,6 @@ walletSelector.addEventListener('change', (e) => {
     Transaction.renderTransaction(transaction)
   }
   Wallet.renderContentsOfWallet(currentWallet)
-  ///////// in rendering   if currency USDollars show if not show otherwise
 })
 
 function loopThroughTags(tags) {
@@ -287,4 +284,10 @@ function loopThroughTags(tags) {
     colorIndex++
   }
   return spans
+}
+
+function UpdateLocalStorage() {
+  localStorage.clear()
+  storeInLocalStorage(arrOfWallets)
+  return getFromLocalStorage()
 }
