@@ -48,9 +48,42 @@ class Wallet {
   }
 }
 
+class Transaction {
+  constructor(amount, type, date, tags, note) {
+    this.amount = amount
+    this.type = type
+    this.date = date
+    this.tags = tags
+    this.note = note
+  }
+
+  static renderTransaction(transaction) {
+    list.insertAdjacentHTML('afterbegin', `
+      <li>
+        <h2 class="display-4 ${transaction.type === 'income' ? 'text-success' : 'text-danger'}" style="font-size: 3.1rem;">${transaction.amount}</h2>
+        <p>${transaction.note}</p>
+        <p>${loopThroughTags(transaction.tags)}</p>
+        <p class="badge badge-light" style="font-size: 1rem;">${transaction.date}</p>
+        <hr>
+      </li>
+    `);
+  }
+
+  static renderAllTransactions() {
+    if (checkLocalStorage()) {
+      let currentWallet = arrOfWallets.find(wallet => wallet.name === walletSelector.value)
+      list.innerHTML = ''
+      for (let transaction of currentWallet.transactions) {
+        Transaction.renderTransaction(transaction)
+      }
+    }
+  }
+}
+
 navigateToAnAppropriatePage()
 renderWalletsIntoSelecor()
 rendersAllContentOfWallet()
+Transaction.renderAllTransactions()
 
 function rendersAllContentOfWallet() {
   if (checkLocalStorage()) {
@@ -193,40 +226,6 @@ function changeTagsColor() {
   }
 }
 
-class Transaction {
-  constructor(amount, type, date, tags, note) {
-    this.amount = amount
-    this.type = type
-    this.date = date
-    this.tags = tags
-    this.note = note
-  }
-
-  static renderTransaction(transaction) {
-    list.insertAdjacentHTML('afterbegin', `
-      <li>
-        <h2 class="display-4 ${transaction.type === 'income' ? 'text-success' : 'text-danger'}" style="font-size: 3.1rem;">${transaction.amount}</h2>
-        <p>${transaction.note}</p>
-        <p>${loopThroughTags(transaction.tags)}</p>
-        <p class="badge badge-light" style="font-size: 1rem;">${transaction.date}</p>
-        <hr>
-      </li>
-    `);
-  }
-
-  static renderAllTransactions() {
-    if (checkLocalStorage()) {
-      let currentWallet = arrOfWallets.find(wallet => wallet.name === walletSelector.value)
-      list.innerHTML = ''
-      for (let transaction of currentWallet.transactions) {
-        Transaction.renderTransaction(transaction)
-      }
-    }
-  }
-}
-
-Transaction.renderAllTransactions()
-
 addTransactionForm.addEventListener('submit', (e) => {
   e.preventDefault()
   let amount = Number(transaction.value);
@@ -261,6 +260,7 @@ addTransactionForm.addEventListener('submit', (e) => {
       }
     }
   }
+  walletSelector.innerHTML = ''
   UpdateLocalStorage().forEach(wallet => {
     Wallet.render(wallet)
   })
@@ -288,122 +288,3 @@ function loopThroughTags(tags) {
   }
   return spans
 }
-
-
-
-
-
-
-
-
-///////////////////////////////////////////////////////////////////////////////////// NEW CODE
-
-// let tagsInput = document.querySelector('#tags-input')
-// let tagsResultUl = document.querySelector('#result-tags')
-// let transactionForm = document.querySelector('#transaction-form')
-// let colorIndex = 0;
-
-
-
-// transactionForm.addEventListener('submit', (e) => {
-//   e.preventDefault()
-//   let tags = seperateTags(tagsInput.value)
-
-//   let type = document.querySelector('input[name="typeOfTransAction"]:checked').value;
-//   console.log(type)
-
-//   for (tag of tags) {
-//     tagsResultUl.insertAdjacentHTML('beforeend', `<span class="badge ${changeTagsColor()} mr-2">${tag}</span>`)
-//     console.log('colorIndex ' + colorIndex + ' ' + changeTagsColor())
-//     colorIndex++
-//   }
-// })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const currentNumber = document.getElementById('current-number')
-// const income = document.getElementById('income')
-// const expense = document.getElementById('expense')
-// const day = new Date().toJSON();
-// const currentDay = new Date(day).toUTCString();
-
-
-// function addNewTransaction(type, amount, date, note, tags) {
-//   let transaction;
-//   if (type === 'expense') {
-//     transaction = new Expense(amount, date, note, tags);
-
-//   } else {
-//     transaction = new Income(amount, date, note, tags);
-
-//   }
-
-//   this._updateBalance(transaction);
-// }
-
-// class Currency {
-//   constructor(id, name, symbol) {
-//     this.id = id;
-//     this.name = name;
-//     this.symbol = symbol;
-//   }
-// }
-// class Transaction {
-//   constructor(amount, date, note = "", tags = "") {
-//     this.amount = amount;
-//     this.date = date;
-//     this.note = note;
-//     this.tags = Array.isArray(tags) ? tags : tags.split(',');
-//   }
-//   amountColor;
-
-//   renderTransactions(list) {
-//     list.innerHTML = '';
-//     const badges = this.tags.reduce((acc, tag) => acc + `<span class="badge badge-pill badge-dark">${tag}</span>`, '');
-//     list.insertAdjacentHTML("beforeend", `<li><p id="amount">${this.amount}</p><p id="date">${this.date}</p><p id="note">${this.note}</p><p id="tag">${this.tags}</p><hr></li>`);
-//   }
-// }
-// class Expense extends Transaction {
-//   amountColor = 'danger';
-//   type = 'expense';
-//   currentAmountMoney(money) {
-
-//     return money - this.amount;
-//   }
-// }
-
-// class Income extends Transaction {
-//   type = 'income';
-//   amountColor = 'success';
-//   currentAmountMoney(money) {
-//     return money + this.amount;
-//   }
-// }
-
-

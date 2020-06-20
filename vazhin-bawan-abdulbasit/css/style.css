@@ -136,11 +136,6 @@
 
 /*/////// custom radio buttons ///////*/
 
-
-
-
-/*///////  bawan  //////////////*/
-
 #amount {
   margin-top: 10%;
   padding-top: 10%;
@@ -167,13 +162,12 @@
   font-weight: 500;
 }
 
-/*///////  bawan  //////////////*/
-
-@media only screen and (max-width: 767px){
+@media only screen and (max-width: 767px) {
   #addTransactionBtn {
     margin-top: 23px;
     margin-bottom: 40px
   }
+
   .WalletBalance {
     font-size: 2rem;
     margin: 50px 0 !important;
